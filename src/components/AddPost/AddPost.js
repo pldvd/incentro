@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from './AddPost.module.scss';
 
 export default function AddPost() {
 
@@ -26,13 +27,23 @@ export default function AddPost() {
   }
 
   return (
-    <div>
+    <div className={styles.AddPost}>
       <h1>Submit New Post</h1>
       <form method="/" onSubmit={handleSubmit}>
         <label htmlFor="title">Add a post title</label>
-        <input type="text" name="title" id="title" placeholder="Add title" onChange={e => handleTitleChange(e)} />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Add title"
+          onChange={e => handleTitleChange(e)} />
         <label htmlFor="body">Add post body text</label>
-        <input type="text" name="body" id="body" placeholder="Add post body" onChange={e => handlePostBodyChange(e)} />
+        <input
+          type="text"
+          name="body"
+          id="body"
+          placeholder="Add post body"
+          onChange={e => handlePostBodyChange(e)} />
         <input type="submit" />
       </form>
     </div>

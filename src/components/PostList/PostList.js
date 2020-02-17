@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styles from './Posts.module.scss';
+import { withRouter } from 'react-router-dom';
 
-export default class PostList extends Component {
+class PostList extends Component {
 
   state = {
     posts: [],
@@ -16,10 +17,15 @@ export default class PostList extends Component {
       )
   }
 
+  handleClick = (e) => {
+    const postId = e.currentTarget.getAttribute('data-id');
+    this.props.history.push(`/${postId}`);
+  }
+
   render() {
     const posts = this.state.posts.map(elem => {
       return (
-        <div className={styles.Post} key={elem.id}>
+        <div className={styles.Post} key={elem.id} data-id={elem.id} onClick={e => this.handleClick(e)}>
           <h3>{elem.id}</h3>
           <p>{elem.body}</p>
         </div>
@@ -33,3 +39,5 @@ export default class PostList extends Component {
     )
   }
 }
+
+export default withRouter(PostList)

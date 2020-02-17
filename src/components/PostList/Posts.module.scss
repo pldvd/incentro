@@ -1,4 +1,12 @@
 .Post {
   max-width: 800px;
   margin: 0 auto;
+  cursor: pointer;
+
+  background-color: #eee;
+  padding: 10px 20px;
+  
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
 }
